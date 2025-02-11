@@ -100,7 +100,7 @@ if __name__ == "__main__":
     threading.Thread(target=check_websites, daemon=True).start()  # Arka planda çalışan web takip botu
     app.run(debug=True)
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     init_db()  # Veritabanını başlat (Tabloyu oluşturur)
     threading.Thread(target=check_websites, daemon=True).start()  # Web izleme botunu başlat
     app.run(host="0.0.0.0", port=10000, debug=True)
