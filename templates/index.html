@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Site İzleyici</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Takip Edilen Web Siteleri</h1>
+    <form action="/add" method="post">
+        <input type="text" name="name" placeholder="Site Adı" required>
+        <input type="text" name="url" placeholder="Site URL" required>
+        <button type="submit">Ekle</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Site Adı</th>
+            <th>URL</th>
+            <th>İşlem</th>
+        </tr>
+        {% for site in websites %}
+        <tr>
+            <td>{{ site[1] }}</td>
+            <td><a href="{{ site[2] }}" target="_blank">{{ site[2] }}</a></td>
+            <td><a href="/delete/{{ site[0] }}">Sil</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
