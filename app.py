@@ -8,6 +8,23 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
+def init_db():
+    """Veritabanını oluştur ve websites tablosunu ekle"""
+    conn = sqlite3.connect("websites.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS websites (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            url TEXT,
+            last_hash TEXT
+        )
+    """)
+
+    conn.commit()
+    conn.close()
+
 # Veritabanı başlatma
 def init_db():
     conn = sqlite3.connect("websites.db")
