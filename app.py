@@ -104,3 +104,10 @@ if __name__ == "__main__":
     init_db()  # Veritabanını başlat (Tabloyu oluşturur)
     threading.Thread(target=check_websites, daemon=True).start()  # Web izleme botunu başlat
     app.run(host="0.0.0.0", port=10000, debug=True)
+
+if __name__ == "__main__":
+    print("🔄 Veritabanı oluşturuluyor...")  # Hata ayıklama için
+    init_db()  # Veritabanını sıfırdan oluştur
+    print("✅ Veritabanı başarıyla oluşturuldu!")  # Başarı mesajı
+    threading.Thread(target=check_websites, daemon=True).start()
+    app.run(host="0.0.0.0", port=10000, debug=True)
