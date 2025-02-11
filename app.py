@@ -128,3 +128,9 @@ if __name__ == "__main__":
     print("✅ Veritabanı başarıyla oluşturuldu!")  # Başarı mesajı
     threading.Thread(target=check_websites, daemon=True).start()
     app.run(host="0.0.0.0", port=10000, debug=True)
+if _name_ == "_main_":
+    print("🔄 Veritabanı kontrol ediliyor...")  # Hata ayıklama için
+    init_db()  # 📌 Veritabanını her başlatmada zorla oluştur
+    print("✅ Veritabanı başarıyla oluşturuldu!")  # Başarı mesajı
+    threading.Thread(target=check_websites, daemon=True).start()
+    app.run(host="0.0.0.0", port=10000, debug=True)
